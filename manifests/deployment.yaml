@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: crawford-container
-        image: 300615130618.dkr.ecr.ap-south-1.amazonaws.com/crawford:latest
+        image: 300615130618.dkr.ecr.ap-south-1.amazonaws.com/crawford:v8
         ports:
         - containerPort: 80
