@@ -353,14 +353,11 @@
     </profile>
   </profiles>
 <distributionManagement>
-    <!-- Spring release repo -->
     <repository>
         <id>maven-releases</id>
         <name>maven-releases</name>
         <url>http://3.110.187.8:8081/repository/maven-releases/</url>
     </repository>
-
-    <!-- Spring snapshot repo -->
     <snapshotRepository>
         <id>maven-snapshots</id>
         <name>maven-snapshots</name>
