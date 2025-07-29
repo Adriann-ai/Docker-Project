@@ -1,0 +1,31 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - sudo apt-get update
+      - sudo apt-get install maven -y
+      - mvn --version
+
+  build:
+    commands:
+      - mvn clean install -DskipTests
+
+  post_build:
+    commands:
+      - echo "Preparing deployment package..."
+      - mkdir -p package/scripts
+      - cp appspec.yml package/
+      - cp -r scripts/* package/scripts/
+      - cp target/spring-petclinic-2.7.0-SNAPSHOT.jar package/
+      - cd package
+      - zip -r ../spring-petclinic-deploy.zip .
+      - cd ..
+      - ls -lh spring-petclinic-deploy.zip
+      - aws s3 cp spring-petclinic-deploy.zip s3://new-adrian-bucket/spring-petclinic-deploy.zip
+
+artifacts:
+  files:
+    - target/spring-petclinic-2.7.0-SNAPSHOT.jar
+
+
